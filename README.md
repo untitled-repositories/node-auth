@@ -14,6 +14,7 @@ config.developer_email = 'romil@tlu.ee';
 config.errorMails = true; // email developer on critical error
 
 config.realm = 'http://localhost:3001'; //main url used by google auth
+config.public_url = 'http://untitled.untitled'; // redirect url after login
 
 config.googleAuth = {
     clientID: '',

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <title>Node-auth</title>
+    <title>Untitled</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <!--<link rel="stylesheet" href="stylesheets/min/styles-min.css">-->
 </head>
 <body ng-controller="MainController as main">
     <div ng-cloak>
         <div ng-show="!user">
-            <a href="http://node-auth.romil.local/api/auth/google">Sign in with google</a>
+            <a href="http://localhost:3001/api/auth/google">Sign in with google</a>
         </div>
         <div ng-show="user">
             <img ng-src={{user.image}} width="200" alt="{{user.email}}" /><br>

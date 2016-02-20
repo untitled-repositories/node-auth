@@ -3,9 +3,9 @@
 
     angular
     .module('app')
-    .factory('Socket', ['$rootScope', 'AuthToken', function($rootScope, AuthToken) {
+    .factory('Socket', ['$rootScope', 'AuthToken', 'SERVER', function($rootScope, AuthToken, SERVER) {
         //console.log(AuthToken.getToken());
-        var socket = io.connect('http://node-auth.romil.local:3001', {
+        var socket = io.connect(SERVER, {
             'query': 'token=' + AuthToken.getToken()
         });
 

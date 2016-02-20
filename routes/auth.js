@@ -86,7 +86,7 @@ function(req, res, next) {
     ], function (err, result) {
         if(err){ res.json(err); }
         //res.json(result);
-        res.redirect('http://node-auth.romil.local/#/?token='+result.token);
+        res.redirect(config.public_url + '/#/?token='+result.token);
     });
 });
 
