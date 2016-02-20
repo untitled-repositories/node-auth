@@ -1,0 +1,7 @@
+<h1>chat page</h1>
+
+<ul class="chat">
+    <li ng-repeat="message in messages track by $index">{{message}}</li>
+</ul>
+
+<input type="text" name="message" ng-model="msg"><button ng-click="Send(msg)">Send</button>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Node-auth</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <!--<link rel="stylesheet" href="stylesheets/min/styles-min.css">-->
+</head>
+<body ng-controller="MainController as main">
+    <div ng-cloak>
+        <div ng-show="!user">
+            <a href="http://node-auth.romil.local/api/auth/google">Sign in with google</a>
+        </div>
+        <div ng-show="user">
+            <img ng-src={{user.image}} width="200" alt="{{user.email}}" /><br>
+            Username: {{user.email}}
+            <br />
+            <button ng-click="logout()">Logout</button><br />
+        </div>
+    </div>
+
+    <div>
+        <!-- BEGIN page-specific content -->
+        <div ng-view></div>
+        <!-- END page-specific content -->
+    </div>
+    <!--<script src="./js/min/app-min.js"></script>-->
+
+    <script src="./js/components/angular/angular.min.js"></script>
+    <script src="./js/components/angular-route/angular-route.min.js"></script>
+    <script src="./js/components/angular-resource/angular-resource.min.js"></script>
+    <script src="./js/components/socket.io-client/socket.io.js"></script>
+    <script src="./js/app/app.js"></script>
+    <script src="./js/app/route-config.js"></script>
+    <script src="./js/app/main/main.js"></script>
+    <script src="./js/app/home/home.js"></script>
+    <script src="./js/app/chat/chat.js"></script>
+    <script src="./js/app/services/AuthInterceptor.js"></script>
+    <script src="./js/app/services/AuthToken.js"></script>
+    <script src="./js/app/services/RouteInterceptor.js"></script>
+    <script src="./js/app/services/RequestService.js"></script>
+    <script src="./js/app/services/Socket.js"></script>
+</body>
+</html>
