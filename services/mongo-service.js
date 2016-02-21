@@ -1,5 +1,13 @@
 var config = require('../config/config');
 
+exports.count = function(args, Collection, next){
+    var query = Collection.find().count();
+    query.where(args);
+    query.exec(function(err, count) {
+        next(err, count);
+    });
+};
+
 exports.find = function(q, Collection, next){
     var query = Collection.find();
     query.where(q.args);
@@ -11,6 +19,7 @@ exports.find = function(q, Collection, next){
     if(q.select){ query.select(q.select); }
     if(q.sort){ query.sort(q.sort); }
     if(q.limit){ query.limit(q.limit); }
+    if(q.skip){ query.skip(q.skip); }
     query.exec(function(err, array) {
         next(err, array);
     });
