@@ -3,11 +3,7 @@
 
     angular
     .module('app')
-    .directive('gamecanvas', gamecanvas);
-
-    gamecanvas.$inject = ['$routeParams','$timeout','$window','$filter'];
-
-    function gamecanvas ($routeParams,$timeout,$window,$filter) {
+    .directive('gamecanvas', ['$routeParams','$timeout','$window','$filter', function($routeParams,$timeout,$window,$filter) {
         return {
             restrict: 'E',
             templateUrl: 'js/app/directives/gamecanvas/gamecanvas.html',
@@ -171,6 +167,6 @@
             }
         };
 
-    }
+    }]);
 
 }());
