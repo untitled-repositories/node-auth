@@ -19,9 +19,9 @@
         }]
       }
     })
-    .when('/chat', {
-      templateUrl: '/js/app/chat/chat.html',
-      controller: 'ChatController',
+    .when('/game', {
+      templateUrl: '/js/app/game/game.html',
+      controller: 'GameController',
       resolve: {
         data: ['RouteInterceptor', function(RouteInterceptor) {
           return RouteInterceptor.checkAuth({ error_location: '/'});
