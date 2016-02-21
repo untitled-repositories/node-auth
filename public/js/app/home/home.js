@@ -3,15 +3,11 @@
 
     angular
     .module('app')
-    .controller('HomeController', HomeController);
-
-    HomeController.$inject = ['$scope'];
-
-    function HomeController($scope) {
+    .controller('HomeController', ['$scope', function($scope) {
 
         console.log('Home');
         //console.log($scope.user);
 
-    }
+    }]);
 
 }());

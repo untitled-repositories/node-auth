@@ -3,11 +3,7 @@
 
     angular
     .module('app')
-    .controller('MainController', MainController);
-
-    MainController.$inject = ['$scope','$rootScope','$location', 'AuthToken'];
-
-    function MainController($scope,$rootScope,$location,AuthToken) {
+    .controller('MainController', ['$scope','$rootScope','$location', 'AuthToken', function($scope,$rootScope,$location,AuthToken) {
 
         console.log('Main');
 
@@ -18,5 +14,5 @@
             console.log('logout');
         };
 
-    } // MainController end
+    }]); // MainController end
 }());
