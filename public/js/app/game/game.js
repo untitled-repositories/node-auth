@@ -3,11 +3,7 @@
 
     angular
     .module('app')
-    .controller('ChatController', GameController);
-
-    GameController.$inject = ['$scope','$rootScope','$location', 'Socket'];
-
-    function GameController($scope,$rootScope,$location, Socket) {
+    .controller('GameController', ['$scope','$rootScope','$location', 'Socket', function($scope,$rootScope,$location, Socket) {
 
         /*console.log('loaded chat page');
 
@@ -29,5 +25,5 @@
             Socket.getSocket().removeAllListeners();
         });
 
-    }
+    }]);
 }());
