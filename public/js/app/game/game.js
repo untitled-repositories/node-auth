@@ -6,19 +6,19 @@
     .controller('GameController', ['$scope','$rootScope','$location', 'Socket', function($scope,$rootScope,$location, Socket) {
 
         console.log('loaded game page');
-        /*
-        $scope.messages = ['hello'];
 
-        $scope.Send = function(){
-            console.log($scope.msg);
-            Socket.emit('chat message to server', $scope.msg);
-            $scope.msg = undefined;
-            return false;
-        };
-        Socket.on('chat message', function(msg){
-            $scope.messages.push(msg);
-            console.log(msg);
-        });*/
+        Socket.emit('giveNewWord', function(){
+            console.log('request sent');
+        });
+
+        Socket.on('giveNewWordSuccess', function(word){
+            console.log('successfully retrieved word');
+            console.log(word);
+        });
+
+        Socket.on('giveNewWordFail', function(err){
+            console.log(err);
+        });
 
         // making possible to launch direcetive fn
         /*$scope.setSomeFunction = function(directiveFn) {
