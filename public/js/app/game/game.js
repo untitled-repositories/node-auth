@@ -7,9 +7,7 @@
 
         console.log('loaded game page');
 
-        Socket.emit('giveNewWord', function(){
-            console.log('request sent');
-        });
+        /*Socket.emit('giveNewWord');
 
         Socket.on('giveNewWordSuccess', function(word){
             console.log('successfully retrieved word');
@@ -18,7 +16,7 @@
 
         Socket.on('giveNewWordFail', function(err){
             console.log(err);
-        });
+        });*/
 
         // making possible to launch direcetive fn
         /*$scope.setSomeFunction = function(directiveFn) {

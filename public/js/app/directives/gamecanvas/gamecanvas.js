@@ -3,7 +3,7 @@
 
     angular
     .module('app')
-    .directive('gamecanvas', ['$routeParams','$timeout','$window','$filter', function($routeParams,$timeout,$window,$filter) {
+    .directive('gamecanvas', ['$routeParams','$timeout','$window','$filter', 'Socket', function($routeParams,$timeout,$window,$filter,Socket) {
         return {
             restrict: 'E',
             templateUrl: 'js/app/directives/gamecanvas/gamecanvas.html',
@@ -22,7 +22,6 @@
                     Typer.instance_ = this;
 
                     this.config = Typer.config;
-                    this.Word = Word;
                     this.canvas = document.querySelector(this.config.canvasId);
                     this.ctx = this.canvas.getContext('2d');
                     this.ratio = null;
@@ -32,6 +31,7 @@
                     this.init();
 
                 };
+
 
                 Typer.config = {
                     canvasId: '#game-canvas',
@@ -44,7 +44,8 @@
                         this.resize();
                         this.bindResize();
 
-                        this.currentWord = new this.Word('loading...', this);
+                        //this.currentWord = new Word('loading...', this);
+                        this.saveAndgetNewWord();
                         this.startGame();
 
                         window.requestAnimationFrame(this.animate.bind(this));
@@ -104,26 +105,34 @@
                         }
 
                     },
-                    draw: function(){
-
-                    },
                     animate: function(){
                         //clear canvas
                         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
                         if(this.currentWord){
                             this.currentWord.drawToCanvas();
+                            //console.log('here');
                         }
                         //console.log('animating');
                         window.requestAnimationFrame(this.animate.bind(this));
                     },
-                    saveToDb: function(){
-                        //save
+                    saveAndgetNewWord: function(){
+
+                        //TODO save previous stats to db
+
+                        Socket.emit('giveNewWord');
 
                         // add new word for guessing
-                        this.currentWord = new this.Word('v2 loading...', this);
+                        Socket.on('giveNewWordSuccess', function(word){
+                            //Typer.instance_ === this
+                            Typer.instance_.replaceWordAndAllowGaming(word);
+                        });
 
+                    },
+                    replaceWordAndAllowGaming: function(word){
+                        this.currentWord = new Word(word, this);
                     }
+
                 };
 
                 var Word = function(word, parent){
@@ -141,7 +150,7 @@
 
                             if(this.word_left.length === 0){
                                 //get new word?
-                                this.parent.saveToDb();
+                                this.parent.saveAndgetNewWord();
                             }
                         }
 
