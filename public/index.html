@@ -6,12 +6,12 @@
     <!--<link rel="stylesheet" href="stylesheets/min/styles-min.css">-->
 </head>
 <body ng-controller="MainController as main">
-    <div ng-cloak>
+    <div ng-cloak class="top-menu">
         <div ng-show="!user">
             <a href="http://localhost:3001/api/auth/google">Sign in with google</a>
         </div>
         <div class="user-data" ng-show="user">
-            <img class="pull-left" ng-src={{user.image}} width="50" alt="{{user.email}}" />
+            <img class="pull-left" ng-src={{user.image}} width="49" alt="{{user.email}}" />
             <span class="pull-left" >{{user.email}}</span>
             <br />
             <button class="pull-left" ng-click="logout()">Logout</button><br />

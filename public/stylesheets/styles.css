@@ -2,6 +2,17 @@
   display: none !important;
 }
 
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.top-menu {
+    height: 49px;
+    border-bottom: 1px solid;
+}
+
 .user-data > *{
     padding-right: 8px;
 }
@@ -11,8 +22,12 @@
 }
 
 /* for GameCanvas */
-canvas #game-canvas {
-    height: 100px;
-    width: 100px;
-    background-color: red;
+.canvas-wrapper {
+    position: relative;
+    height: 0;
+}
+#game-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
