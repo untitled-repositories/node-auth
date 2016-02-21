@@ -30,12 +30,13 @@ gulp.task('build-js', function() {
         './public/js/app/route-config.js',
         './public/js/app/main/main.js',
         './public/js/app/home/home.js',
-        './public/js/app/chat/chat.js',
+        './public/js/app/game/game.js',
         './public/js/app/services/AuthInterceptor.js',
         './public/js/app/services/AuthToken.js',
         './public/js/app/services/RouteInterceptor.js',
         './public/js/app/services/RequestService.js',
-        './public/js/app/services/Socket.js'
+        './public/js/app/services/Socket.js',
+        './public/js/app/directives/gamecanvas/gamecanvas.js'
     ])
     //.pipe(sourcemaps.init())
     .pipe(concat('app-min.js'))

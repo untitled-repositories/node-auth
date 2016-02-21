@@ -1,3 +1,18 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+.user-data > *{
+    padding-right: 8px;
+}
+
+.pull-left {
+    float: left;
+}
+
+/* for GameCanvas */
+canvas #game-canvas {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}

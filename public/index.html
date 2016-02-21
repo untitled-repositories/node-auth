@@ -10,11 +10,11 @@
         <div ng-show="!user">
             <a href="http://localhost:3001/api/auth/google">Sign in with google</a>
         </div>
-        <div ng-show="user">
-            <img ng-src={{user.image}} width="200" alt="{{user.email}}" /><br>
-            Username: {{user.email}}
+        <div class="user-data" ng-show="user">
+            <img class="pull-left" ng-src={{user.image}} width="50" alt="{{user.email}}" />
+            <span class="pull-left" >{{user.email}}</span>
             <br />
-            <button ng-click="logout()">Logout</button><br />
+            <button class="pull-left" ng-click="logout()">Logout</button><br />
         </div>
     </div>
 
@@ -33,11 +33,12 @@
     <script src="./js/app/route-config.js"></script>
     <script src="./js/app/main/main.js"></script>
     <script src="./js/app/home/home.js"></script>
-    <script src="./js/app/chat/chat.js"></script>
+    <script src="./js/app/game/game.js"></script>
     <script src="./js/app/services/AuthInterceptor.js"></script>
     <script src="./js/app/services/AuthToken.js"></script>
     <script src="./js/app/services/RouteInterceptor.js"></script>
     <script src="./js/app/services/RequestService.js"></script>
     <script src="./js/app/services/Socket.js"></script>
+    <script src="./js/app/directives/gamecanvas/gamecanvas.js"></script>
 </body>
 </html>
