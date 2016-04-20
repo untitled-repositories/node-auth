@@ -7,7 +7,7 @@ var passport = require('passport');
 var mongoService = require('../services/mongo-service');
 var User = require('../models/user').User;
 
-var config = require('../config/config');
+var config = require('../config');
 var async = require('async');
 
 var jwtSecret = config.secret;
@@ -21,11 +21,16 @@ res.json(result);
 */
 
 router.get('/me', validateJwt, function(req, res){
+
+    //validateJwt callback
+    console.log('here');
+
     //iat – This is the time that the token was created, as a unix timestamp offset in seconds.
     //validate if token valid validateJwt returns req.user as object set to token
 
     if(!req.user){
-        return res.status(401).send({error: 'Unauthorized'});
+        console.log('not authorized');
+        return res.status(403).send({error: 'Unauthorized'});
     }else{
 
         //token creation time diff, to check if token expired
@@ -39,13 +44,20 @@ router.get('/me', validateJwt, function(req, res){
                     user: user
                 };
 
+
+
                 // create new token if last one expired (7 days)
                 // also possible use {expiresIn: 7d}, but then need to handle err
-                if(timeDiffInSeconds > config.tokenExpiration){
+                if(timeDiffInSeconds > 1 && timeDiffInSeconds < 10){
                     console.log('token updated');
                     response.token = jwt.sign({
-                        id: user.id
+                        id: user.id,
+                        expiresIn: 10
                     }, jwtSecret);
+                }else if(timeDiffInSeconds > 1){
+                    console.log('token expired completely, delete token client side');
+                    return res.status(403).send({error: 'Unauthorized'});
+
                 }
                 // delete unneccesery info
                 response.user.google_id = undefined;

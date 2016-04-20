@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var config = require('../config/config');
+var config = require('../config');
 var app = require('../app');
 var http = require('http');
 var socket = require('../routes/socket.js');

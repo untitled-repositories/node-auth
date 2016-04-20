@@ -15,6 +15,7 @@
             post: function(request, query) {
                 return $http.post(API_BASE + request, query)
                 .then(function(response) {
+                    console.log(response);
                     return response.data;
                 });
             }

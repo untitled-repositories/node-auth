@@ -1,4 +1,4 @@
-var config = require('../config/config');
+var config = require('../config');
 
 exports.find = function(q, Collection, next){
     var query = Collection.find();

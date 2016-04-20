@@ -7,7 +7,7 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var mongoService = require('../services/mongo-service');
 var User = require('../models/user').User;
 
-var config = require('../config/config');
+var config = require('../config');
 var log = require('../logger');
 
 var async = require('async');

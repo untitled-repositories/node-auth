@@ -69,6 +69,7 @@
 
                     // token not validated
                     $rootScope.user = undefined;
+                    AuthToken.clearToken();
 
                     if(option && option.error_location){
                         console.log('redirected to '+ option.error_location);

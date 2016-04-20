@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var log = require('./logger');
 var nodemailer = require('nodemailer');
-var config = require('./config/config');
+var config = require('./config');
 var passport = require('passport');
 
 var mongoose = require('mongoose');
@@ -33,6 +33,13 @@ app.use(function(req, res, next) {
 
 // error handlers
 app.use(function(err, req, res, next) {
+
+    //if auth error, wrong token
+    if (err.name === 'UnauthorizedError') {
+        res.status(403).json({message: "Not authorized"});
+        return;
+    }
+
     log.error(err.message);
     //err = {};
     res.status(err.status || 500).

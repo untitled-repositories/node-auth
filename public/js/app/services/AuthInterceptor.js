@@ -14,13 +14,16 @@
                 }
                 return config;
             },
-            response: function (response) {
-                if (response.status === 401) {
+            responseError: function (response) {
+                console.log(response);
+                if (response.status === 403) {
+
                     console.warn('user not authenticated', response);
-                    // handle the case where the user is not authenticated
-                    // possilbe while serving frontend with express
+                    
+
                 }
-                return response || $q.when(response);
+                // do something on error
+                return $q.reject(response);
             }
         };
     }]);

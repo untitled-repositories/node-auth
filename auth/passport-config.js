@@ -2,7 +2,7 @@ module.exports = function() {
 
     var passport = require('passport');
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-    var config = require('../config/config');
+    var config = require('../config');
 
     // jwt
     var jwt = require('jsonwebtoken');
